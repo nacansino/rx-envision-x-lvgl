@@ -1,0 +1,8 @@
+-isa=rxv2
+-include="C:\Program Files (x86)\Renesas\RX\3_1_0\include","G:\renesasMCU\envision\an-r20an0487ej0100-qedisplayrx-100\workspace\QE_for_Display_sample_RX65N_Envision\src\smc_gen\r_bsp","G:\renesasMCU\envision\an-r20an0487ej0100-qedisplayrx-100\workspace\QE_for_Display_sample_RX65N_Envision\src\smc_gen\r_config","G:\renesasMCU\envision\an-r20an0487ej0100-qedisplayrx-100\workspace\QE_for_Display_sample_RX65N_Envision\src\smc_gen\r_glcdc_rx","G:\renesasMCU\envision\an-r20an0487ej0100-qedisplayrx-100\workspace\QE_for_Display_sample_RX65N_Envision\src\smc_gen\general","G:\renesasMCU\envision\an-r20an0487ej0100-qedisplayrx-100\workspace\QE_for_Display_sample_RX65N_Envision\src\smc_gen\r_pincfg"
+-lang=c99
+-nomessage
+-output=obj
+-obj_path="src"
+-debug
+-nologo 

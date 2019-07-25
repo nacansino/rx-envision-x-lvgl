@@ -1,0 +1,5 @@
+-isa=rxv2
+-lang=c99
+-head=runtime,stdio,stdlib,string,new
+-output="QE_for_Display_sample_RX65N_Envision.lib"
+-nologo
