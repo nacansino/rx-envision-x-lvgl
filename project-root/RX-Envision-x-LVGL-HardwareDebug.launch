@@ -175,7 +175,7 @@
 <intAttribute key="org.eclipse.cdt.debug.gdbjtag.core.delay" value="3"/>
 <booleanAttribute key="org.eclipse.cdt.debug.gdbjtag.core.doHalt" value="false"/>
 <booleanAttribute key="org.eclipse.cdt.debug.gdbjtag.core.doReset" value="false"/>
-<stringAttribute key="org.eclipse.cdt.debug.gdbjtag.core.imageFileName" value="G:\renesasMCU\envision\an-r20an0487ej0100-qedisplayrx-100\workspace\QE_for_Display_sample_RX65N_Envision\HardwareDebug\QE_for_Display_sample_RX65N_Envision.x"/>
+<stringAttribute key="org.eclipse.cdt.debug.gdbjtag.core.imageFileName" value="G:\renesasMCU\rx-envision-x-lvgl\project-root\HardwareDebug\RX_Envision_LVGL.x"/>
 <stringAttribute key="org.eclipse.cdt.debug.gdbjtag.core.imageOffset" value=""/>
 <stringAttribute key="org.eclipse.cdt.debug.gdbjtag.core.initCommands" value=""/>
 <booleanAttribute key="org.eclipse.cdt.debug.gdbjtag.core.loadImage" value="true"/>
@@ -186,7 +186,7 @@
 <booleanAttribute key="org.eclipse.cdt.debug.gdbjtag.core.setResume" value="false"/>
 <booleanAttribute key="org.eclipse.cdt.debug.gdbjtag.core.setStopAt" value="true"/>
 <stringAttribute key="org.eclipse.cdt.debug.gdbjtag.core.stopAt" value="main"/>
-<stringAttribute key="org.eclipse.cdt.debug.gdbjtag.core.symbolsFileName" value="G:\renesasMCU\envision\an-r20an0487ej0100-qedisplayrx-100\workspace\QE_for_Display_sample_RX65N_Envision\HardwareDebug\QE_for_Display_sample_RX65N_Envision.x"/>
+<stringAttribute key="org.eclipse.cdt.debug.gdbjtag.core.symbolsFileName" value="G:\renesasMCU\rx-envision-x-lvgl\project-root\HardwareDebug\RX_Envision_LVGL.x"/>
 <stringAttribute key="org.eclipse.cdt.debug.gdbjtag.core.symbolsOffset" value=""/>
 <booleanAttribute key="org.eclipse.cdt.debug.gdbjtag.core.useFileForImage" value="false"/>
 <booleanAttribute key="org.eclipse.cdt.debug.gdbjtag.core.useFileForSymbols" value="false"/>
@@ -198,12 +198,12 @@
 <stringAttribute key="org.eclipse.cdt.launch.DEBUGGER_REGISTER_GROUPS" value=""/>
 <booleanAttribute key="org.eclipse.cdt.launch.DEBUGGER_STOP_AT_MAIN" value="true"/>
 <stringAttribute key="org.eclipse.cdt.launch.DEBUGGER_STOP_AT_MAIN_SYMBOL" value="main"/>
-<stringAttribute key="org.eclipse.cdt.launch.PROGRAM_NAME" value="HardwareDebug/QE_for_Display_sample_RX65N_Envision.x"/>
-<stringAttribute key="org.eclipse.cdt.launch.PROJECT_ATTR" value="QE_for_Display_sample_RX65N_Envision"/>
-<booleanAttribute key="org.eclipse.cdt.launch.PROJECT_BUILD_CONFIG_AUTO_ATTR" value="true"/>
-<stringAttribute key="org.eclipse.cdt.launch.PROJECT_BUILD_CONFIG_ID_ATTR" value="com.renesas.cdt.managedbuild.renesas.ccrx.hardwaredebug.configuration.924887615"/>
+<stringAttribute key="org.eclipse.cdt.launch.PROGRAM_NAME" value="G:\renesasMCU\rx-envision-x-lvgl\project-root\HardwareDebug\RX_Envision_LVGL.x"/>
+<stringAttribute key="org.eclipse.cdt.launch.PROJECT_ATTR" value="RX_Envision_LVGL"/>
+<booleanAttribute key="org.eclipse.cdt.launch.PROJECT_BUILD_CONFIG_AUTO_ATTR" value="false"/>
+<stringAttribute key="org.eclipse.cdt.launch.PROJECT_BUILD_CONFIG_ID_ATTR" value=""/>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
-<listEntry value="/QE_for_Display_sample_RX65N_Envision"/>
+<listEntry value="/RX_Envision_LVGL"/>
 </listAttribute>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
 <listEntry value="4"/>

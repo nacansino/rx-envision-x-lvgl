@@ -9,13 +9,13 @@ RM := rm -rf *.sni *.dbg *.lst *.lis *.lpp *.map *.x *.lbp *.bls *.libelf *.rel 
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include src/subdir.mk
--include src/smc_gen/r_glcdc_rx/src/subdir.mk
--include src/smc_gen/r_glcdc_rx/src/targets/rx65n/subdir.mk
--include src/smc_gen/r_pincfg/subdir.mk
 -include src/smc_gen/r_bsp/mcu/all/subdir.mk
--include src/smc_gen/general/subdir.mk
 -include src/smc_gen/r_bsp/board/generic_rx65n/subdir.mk
 -include src/smc_gen/r_bsp/mcu/rx65n/subdir.mk
+-include src/smc_gen/r_glcdc_rx/src/targets/rx65n/subdir.mk
+-include src/smc_gen/r_pincfg/subdir.mk
+-include src/smc_gen/general/subdir.mk
+-include src/smc_gen/r_glcdc_rx/src/subdir.mk
 
 ifneq ($(MAKECMDGOALS),clean)
 ifneq ($(strip $(C_DEPS)),)
@@ -80,10 +80,10 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables
 LINKER_OUTPUT_OUTPUTS += \
-QE_for_Display_sample_RX65N_Envision.abs
+RX_Envision_LVGL.abs
 
 LIBRARY_GENERATOR_OUTPUTTYPE_OUTPUTS += \
-QE_for_Display_sample_RX65N_Envision.lib
+RX_Envision_LVGL.lib
 
 OBJS := \
 $(COMPILER_OBJS) \
@@ -92,42 +92,42 @@ $(ASSEMBLER_OBJS) \
 $(CUSTOM_OBJS)
 
 # All Target
-all: $(LINKER_OUTPUT_OUTPUTS) QE_for_Display_sample_RX65N_Envision.x
+all: $(LINKER_OUTPUT_OUTPUTS) RX_Envision_LVGL.x
 
 	@echo 'Build complete.'
 
-QE_for_Display_sample_RX65N_Envision.abs: $(OBJS)  $(ALL_ASMS) $(LIBRARY_GENERATOR_OUTPUTTYPE_OUTPUTS) 
+RX_Envision_LVGL.abs: $(OBJS)  $(ALL_ASMS) $(LIBRARY_GENERATOR_OUTPUTTYPE_OUTPUTS) 
 	@echo 'Invoking: Linker'
 	@echo 'Building target:'
-	@echo LinkerQE_for_Display_sample_RX65N_Envision.tmp=
-	@sed -e "s/^/    /" "LinkerQE_for_Display_sample_RX65N_Envision.tmp"
-	rlink -subcommand="LinkerQE_for_Display_sample_RX65N_Envision.tmp"
+	@echo LinkerRX_Envision_LVGL.tmp=
+	@sed -e "s/^/    /" "LinkerRX_Envision_LVGL.tmp"
+	rlink -subcommand="LinkerRX_Envision_LVGL.tmp"
 	@echo 'Finished building target:'
 	@echo.
 
 
-QE_for_Display_sample_RX65N_Envision.lib: 
+RX_Envision_LVGL.lib: 
 	@echo 'Invoking: Library Generator'
-	@echo LibraryGeneratorQE_for_Display_sample_RX65N_Envision.tmp=
-	@sed -e "s/^/    /" "LibraryGeneratorQE_for_Display_sample_RX65N_Envision.tmp"
-	lbgrx -subcommand="LibraryGeneratorQE_for_Display_sample_RX65N_Envision.tmp"
+	@echo LibraryGeneratorRX_Envision_LVGL.tmp=
+	@sed -e "s/^/    /" "LibraryGeneratorRX_Envision_LVGL.tmp"
+	lbgrx -subcommand="LibraryGeneratorRX_Envision_LVGL.tmp"
 	@echo 'Finished building:'
 	@echo.
 
-QE_for_Display_sample_RX65N_Envision.x: QE_for_Display_sample_RX65N_Envision.abs
-		-C:\Renesas\e2_studio\Utilities\\ccrx\renesas_cc_converter.exe QE_for_Display_sample_RX65N_Envision.abs QE_for_Display_sample_RX65N_Envision.x
+RX_Envision_LVGL.x: RX_Envision_LVGL.abs
+		-C:\Renesas\e2_studio\Utilities\\ccrx\renesas_cc_converter.exe RX_Envision_LVGL.abs RX_Envision_LVGL.x
 
 # Other Targets
 clean:
 	-$(RM) $(LINKER_OUTPUT_OUTPUTS) $(LIBRARY_GENERATOR_OUTPUTTYPE_OUTPUTS)
 	-rm -rf src/*.obj src/*.d src/*.asm src/*.p src/*.pp src/*.src src/*.jmp src/*.lst src/*.prn src/*.i 
-	-rm -rf src/smc_gen/r_glcdc_rx/src/*.obj src/smc_gen/r_glcdc_rx/src/*.d src/smc_gen/r_glcdc_rx/src/*.asm src/smc_gen/r_glcdc_rx/src/*.p src/smc_gen/r_glcdc_rx/src/*.pp src/smc_gen/r_glcdc_rx/src/*.src src/smc_gen/r_glcdc_rx/src/*.jmp src/smc_gen/r_glcdc_rx/src/*.lst src/smc_gen/r_glcdc_rx/src/*.prn src/smc_gen/r_glcdc_rx/src/*.i 
-	-rm -rf src/smc_gen/r_glcdc_rx/src/targets/rx65n/*.obj src/smc_gen/r_glcdc_rx/src/targets/rx65n/*.d src/smc_gen/r_glcdc_rx/src/targets/rx65n/*.asm src/smc_gen/r_glcdc_rx/src/targets/rx65n/*.p src/smc_gen/r_glcdc_rx/src/targets/rx65n/*.pp src/smc_gen/r_glcdc_rx/src/targets/rx65n/*.src src/smc_gen/r_glcdc_rx/src/targets/rx65n/*.jmp src/smc_gen/r_glcdc_rx/src/targets/rx65n/*.lst src/smc_gen/r_glcdc_rx/src/targets/rx65n/*.prn src/smc_gen/r_glcdc_rx/src/targets/rx65n/*.i 
-	-rm -rf src/smc_gen/r_pincfg/*.obj src/smc_gen/r_pincfg/*.d src/smc_gen/r_pincfg/*.asm src/smc_gen/r_pincfg/*.p src/smc_gen/r_pincfg/*.pp src/smc_gen/r_pincfg/*.src src/smc_gen/r_pincfg/*.jmp src/smc_gen/r_pincfg/*.lst src/smc_gen/r_pincfg/*.prn src/smc_gen/r_pincfg/*.i 
 	-rm -rf src/smc_gen/r_bsp/mcu/all/*.obj src/smc_gen/r_bsp/mcu/all/*.d src/smc_gen/r_bsp/mcu/all/*.asm src/smc_gen/r_bsp/mcu/all/*.p src/smc_gen/r_bsp/mcu/all/*.pp src/smc_gen/r_bsp/mcu/all/*.src src/smc_gen/r_bsp/mcu/all/*.jmp src/smc_gen/r_bsp/mcu/all/*.lst src/smc_gen/r_bsp/mcu/all/*.prn src/smc_gen/r_bsp/mcu/all/*.i 
-	-rm -rf src/smc_gen/general/*.obj src/smc_gen/general/*.d src/smc_gen/general/*.asm src/smc_gen/general/*.p src/smc_gen/general/*.pp src/smc_gen/general/*.src src/smc_gen/general/*.jmp src/smc_gen/general/*.lst src/smc_gen/general/*.prn src/smc_gen/general/*.i 
 	-rm -rf src/smc_gen/r_bsp/board/generic_rx65n/*.obj src/smc_gen/r_bsp/board/generic_rx65n/*.d src/smc_gen/r_bsp/board/generic_rx65n/*.asm src/smc_gen/r_bsp/board/generic_rx65n/*.p src/smc_gen/r_bsp/board/generic_rx65n/*.pp src/smc_gen/r_bsp/board/generic_rx65n/*.src src/smc_gen/r_bsp/board/generic_rx65n/*.jmp src/smc_gen/r_bsp/board/generic_rx65n/*.lst src/smc_gen/r_bsp/board/generic_rx65n/*.prn src/smc_gen/r_bsp/board/generic_rx65n/*.i 
 	-rm -rf src/smc_gen/r_bsp/mcu/rx65n/*.obj src/smc_gen/r_bsp/mcu/rx65n/*.d src/smc_gen/r_bsp/mcu/rx65n/*.asm src/smc_gen/r_bsp/mcu/rx65n/*.p src/smc_gen/r_bsp/mcu/rx65n/*.pp src/smc_gen/r_bsp/mcu/rx65n/*.src src/smc_gen/r_bsp/mcu/rx65n/*.jmp src/smc_gen/r_bsp/mcu/rx65n/*.lst src/smc_gen/r_bsp/mcu/rx65n/*.prn src/smc_gen/r_bsp/mcu/rx65n/*.i 
+	-rm -rf src/smc_gen/r_glcdc_rx/src/targets/rx65n/*.obj src/smc_gen/r_glcdc_rx/src/targets/rx65n/*.d src/smc_gen/r_glcdc_rx/src/targets/rx65n/*.asm src/smc_gen/r_glcdc_rx/src/targets/rx65n/*.p src/smc_gen/r_glcdc_rx/src/targets/rx65n/*.pp src/smc_gen/r_glcdc_rx/src/targets/rx65n/*.src src/smc_gen/r_glcdc_rx/src/targets/rx65n/*.jmp src/smc_gen/r_glcdc_rx/src/targets/rx65n/*.lst src/smc_gen/r_glcdc_rx/src/targets/rx65n/*.prn src/smc_gen/r_glcdc_rx/src/targets/rx65n/*.i 
+	-rm -rf src/smc_gen/r_pincfg/*.obj src/smc_gen/r_pincfg/*.d src/smc_gen/r_pincfg/*.asm src/smc_gen/r_pincfg/*.p src/smc_gen/r_pincfg/*.pp src/smc_gen/r_pincfg/*.src src/smc_gen/r_pincfg/*.jmp src/smc_gen/r_pincfg/*.lst src/smc_gen/r_pincfg/*.prn src/smc_gen/r_pincfg/*.i 
+	-rm -rf src/smc_gen/general/*.obj src/smc_gen/general/*.d src/smc_gen/general/*.asm src/smc_gen/general/*.p src/smc_gen/general/*.pp src/smc_gen/general/*.src src/smc_gen/general/*.jmp src/smc_gen/general/*.lst src/smc_gen/general/*.prn src/smc_gen/general/*.i 
+	-rm -rf src/smc_gen/r_glcdc_rx/src/*.obj src/smc_gen/r_glcdc_rx/src/*.d src/smc_gen/r_glcdc_rx/src/*.asm src/smc_gen/r_glcdc_rx/src/*.p src/smc_gen/r_glcdc_rx/src/*.pp src/smc_gen/r_glcdc_rx/src/*.src src/smc_gen/r_glcdc_rx/src/*.jmp src/smc_gen/r_glcdc_rx/src/*.lst src/smc_gen/r_glcdc_rx/src/*.prn src/smc_gen/r_glcdc_rx/src/*.i 
 	@echo
 	@echo 'Clean complete.'
 

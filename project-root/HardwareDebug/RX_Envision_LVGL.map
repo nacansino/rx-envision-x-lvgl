@@ -1,8 +1,8 @@
-Renesas Optimizing Linker (W3.01.00 )             24-Jul-2019 23:38:04
+Renesas Optimizing Linker (W3.01.00 )             28-Jul-2019 18:37:53
 
 *** Options ***
 
--subcommand=LinkerQE_for_Display_sample_RX65N_Envision.tmp
+-subcommand=LinkerRX_Envision_LVGL.tmp
 -noprelink
 -input=".\src\main.obj"
 -input=".\src/smc_gen/general\r_cg_dmac_user.obj"
@@ -31,13 +31,13 @@ Renesas Optimizing Linker (W3.01.00 )             24-Jul-2019 23:38:04
 -input=".\src/smc_gen/r_glcdc_rx/src/targets/rx65n\r_glcdc_rx65n.obj"
 -input=".\src/smc_gen/r_pincfg\Pin.obj"
 -input=".\src/smc_gen/r_pincfg\r_glcdc_rx_pinset.obj"
--library=".\QE_for_Display_sample_RX65N_Envision.lib"
+-library=".\RX_Envision_LVGL.lib"
 -start=SU,SI,B_1,R_1,B_2,R_2,B,R/04,FRAME_BUFFER/0800000,C_1,C_2,C,C$*,D*,W*,L,P*/0FFE00000,EXCEPTVECT/0FFFFFF80,RESETVECT/0FFFFFFFC
--output="QE_for_Display_sample_RX65N_Envision.abs"
+-output="RX_Envision_LVGL.abs"
 -form=absolute
 -nomessage
 -vect=_undefined_interrupt_source_isr
--list=QE_for_Display_sample_RX65N_Envision.map
+-list=RX_Envision_LVGL.map
 -nooptimize
 -rom=D=R,D_1=R_1,D_2=R_2
 -nologo
