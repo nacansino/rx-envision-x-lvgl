@@ -65,6 +65,7 @@
 /* Pixel color code of RGB565 format, 2 bytes per pixel */
 #define PIXEL_COLOR_BLUE     (0x001F)
 #define PIXEL_COLOR_RED      (0xF800)
+#define PIXEL_COLOR_YELLOW	 (0xE607)
 
 
 
@@ -133,6 +134,7 @@ static void qe_for_display_parameter_set (glcdc_cfg_t * glcdc_qe_cfg);
 static void glcdc_callback (void * pdata);
 static void board_port_setting (void);
 static void frame_buffer_initialize (void);
+static void frame_buffer_initialize_yellow (void);
 
 void main(void);
 
@@ -207,6 +209,63 @@ static void frame_buffer_initialize (void)
             else
             {
                 *p_pixel_addr++ = PIXEL_COLOR_BLUE; /* Blue color code(RGB565) */
+            }
+        }
+    }
+
+    /* End line */
+    for (i = 0; i < IMAGE_WIDTH; i++)
+    {
+        *p_pixel_addr++ = PIXEL_COLOR_RED; /* Red color code(RGB565) */
+    }
+
+} /* End of function frame_buffer_initialize() */
+
+/*******************************************************************************
+ * Outline      : Initialize the frame buffer area with yellow
+ * Header       : none
+ * Function Name: frame_buffer_initialize
+ * Description  : Initialize the frame buffer area. Frame with red color code (RGB 565),
+ *              : and fill the inside with the yellowe color code (RGB 565).
+ * Arguments    : none
+ * Return Value : none
+ *******************************************************************************/
+static void frame_buffer_initialize_yellow (void)
+{
+
+    uint16_t * p_pixel_addr;
+    volatile uint32_t i;
+    volatile uint32_t j;
+
+    /* Get the top address of the frame buffer */
+    p_pixel_addr = (uint16_t *)FRAME_BUF_BASE_ADDR;
+
+    /* Top line */
+    for (i = 0; i < IMAGE_WIDTH; i++)
+    {
+        *p_pixel_addr++ = PIXEL_COLOR_RED; /* Red color code(RGB565) */
+    }
+
+    for (i = 0; i < (IMAGE_HEIGHT - 2); i++)
+    {
+        for (j = 0; j < IMAGE_WIDTH; j++)
+        {
+#ifdef __BIG
+            /*  Edge pixel (big endian) */
+            if ((1 == j) || ((IMAGE_WIDTH - 2) == j))
+            {
+                *p_pixel_addr++ = PIXEL_COLOR_RED; /* Red color code(RGB565) */
+            }
+#else
+            /*  Edge pixel (little endian) */
+            if ((0 == j) || ((IMAGE_WIDTH - 1) == j))
+            {
+                *p_pixel_addr++ = PIXEL_COLOR_RED; /* Red color code(RGB565) */
+            }
+#endif
+            else
+            {
+                *p_pixel_addr++ = PIXEL_COLOR_YELLOW; /* Blue color code(RGB565) */
             }
         }
     }

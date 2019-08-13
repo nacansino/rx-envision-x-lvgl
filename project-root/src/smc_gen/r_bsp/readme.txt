@@ -40,16 +40,16 @@ r_bsp
 |   readme.txt
 |
 +---board
-|   +---generic_rx111
+|   +---rskrx111
 |   |    :
 |   :
 |   \---user
 |
 +---doc
 |   +---en
-|       r01an1685ej{VERSION_NUMBER}-rx-bsp.pdf
+|       r01an1685ej{VERSION_NUMBER}-rx.pdf
 |   +---ja
-|       r01an1685jj{VERSION_NUMBER}-rx-bsp.pdf
+|       r01an1685jj{VERSION_NUMBER}-rx.pdf
 |
 \---mcu
     +---all

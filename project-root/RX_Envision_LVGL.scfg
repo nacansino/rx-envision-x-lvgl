@@ -11,7 +11,7 @@
 </toolchain>
 </configuration>
 <platform id="R5F565NEDxFB"/>
-<option id="board" value="Custom User Board"/>
+<option id="board" value="EnvisionRX65N (V1.00)"/>
 </general>
 <tool id="Clock">
 <Item current="true" id="mainclock.selectBox"/>
@@ -229,27 +229,103 @@
 </tool>
 <tool id="Pins" version="1.0.0.0">
 <pinItem allocation="20" comments="" direction="None" id="XTAL" locked="false" status="0"/>
-<pinItem allocation="84" comments="" direction="None" id="LCD_TCON3" locked="false" status="0"/>
-<pinItem allocation="83" comments="" direction="None" id="LCD_TCON2" locked="false" status="0"/>
-<pinItem allocation="81" comments="" direction="None" id="LCD_TCON0" locked="false" status="0"/>
-<pinItem allocation="80" comments="" direction="None" id="LCD_CLK" locked="false" status="0"/>
+<pinItem allocation="84$B" comments="" direction="None" id="LCD_TCON3" locked="false" status="0"/>
+<pinItem allocation="83$B" comments="" direction="None" id="LCD_TCON2" locked="false" status="0"/>
+<pinItem allocation="81$B" comments="" direction="None" id="LCD_TCON0" locked="false" status="0"/>
+<pinItem allocation="80$B" comments="" direction="None" id="LCD_CLK" locked="false" status="0"/>
 <pinItem allocation="22" comments="" direction="None" id="EXTAL" locked="false" status="0"/>
-<pinItem allocation="110" comments="" direction="None" id="LCD_DATA15" locked="false" status="0"/>
-<pinItem allocation="102" comments="" direction="None" id="LCD_DATA10" locked="false" status="0"/>
-<pinItem allocation="109" comments="" direction="None" id="LCD_DATA14" locked="false" status="0"/>
-<pinItem allocation="108" comments="" direction="None" id="LCD_DATA13" locked="false" status="0"/>
-<pinItem allocation="107" comments="" direction="None" id="LCD_DATA12" locked="false" status="0"/>
-<pinItem allocation="106" comments="" direction="None" id="LCD_DATA11" locked="false" status="0"/>
-<pinItem allocation="87" comments="" direction="None" id="LCD_DATA0" locked="false" status="0"/>
-<pinItem allocation="88" comments="" direction="None" id="LCD_DATA1" locked="false" status="0"/>
-<pinItem allocation="89" comments="" direction="None" id="LCD_DATA2" locked="false" status="0"/>
-<pinItem allocation="90" comments="" direction="None" id="LCD_DATA3" locked="false" status="0"/>
-<pinItem allocation="92" comments="" direction="None" id="LCD_DATA4" locked="false" status="0"/>
-<pinItem allocation="94" comments="" direction="None" id="LCD_DATA5" locked="false" status="0"/>
-<pinItem allocation="95" comments="" direction="None" id="LCD_DATA6" locked="false" status="0"/>
-<pinItem allocation="96" comments="" direction="None" id="LCD_DATA7" locked="false" status="0"/>
-<pinItem allocation="97" comments="" direction="None" id="LCD_DATA8" locked="false" status="0"/>
-<pinItem allocation="101" comments="" direction="None" id="LCD_DATA9" locked="false" status="0"/>
+<pinItem allocation="110$B" comments="" direction="None" id="LCD_DATA15" locked="false" status="0"/>
+<pinItem allocation="102$B" comments="" direction="None" id="LCD_DATA10" locked="false" status="0"/>
+<pinItem allocation="109$B" comments="" direction="None" id="LCD_DATA14" locked="false" status="0"/>
+<pinItem allocation="108$B" comments="" direction="None" id="LCD_DATA13" locked="false" status="0"/>
+<pinItem allocation="107$B" comments="" direction="None" id="LCD_DATA12" locked="false" status="0"/>
+<pinItem allocation="106$B" comments="" direction="None" id="LCD_DATA11" locked="false" status="0"/>
+<pinItem allocation="87$B" comments="" direction="None" id="LCD_DATA0" locked="false" status="0"/>
+<pinItem allocation="88$B" comments="" direction="None" id="LCD_DATA1" locked="false" status="0"/>
+<pinItem allocation="89$B" comments="" direction="None" id="LCD_DATA2" locked="false" status="0"/>
+<pinItem allocation="90$B" comments="" direction="None" id="LCD_DATA3" locked="false" status="0"/>
+<pinItem allocation="92$B" comments="" direction="None" id="LCD_DATA4" locked="false" status="0"/>
+<pinItem allocation="94$B" comments="" direction="None" id="LCD_DATA5" locked="false" status="0"/>
+<pinItem allocation="95$B" comments="" direction="None" id="LCD_DATA6" locked="false" status="0"/>
+<pinItem allocation="96$B" comments="" direction="None" id="LCD_DATA7" locked="false" status="0"/>
+<pinItem allocation="97$B" comments="" direction="None" id="LCD_DATA8" locked="false" status="0"/>
+<pinItem allocation="101$B" comments="" direction="None" id="LCD_DATA9" locked="false" status="0"/>
+<pinnumItem comment="LCD-B4" id="88"/>
+<pinnumItem comment="LCD-B5" id="89"/>
+<pinnumItem comment="LCD-R7" id="110"/>
+<pinnumItem comment="SD-POWER-EN" id="112"/>
+<pinnumItem comment="LCD-DISP-EN" id="113"/>
+<pinnumItem comment="LCD-B6" id="90"/>
+<pinnumItem comment="LCD-B7" id="92"/>
+<pinnumItem comment="QSPI-IO1" id="119"/>
+<pinnumItem comment="LCD-G2" id="94"/>
+<pinnumItem comment="LCD-G3" id="95"/>
+<pinnumItem comment="LCD-G4" id="96"/>
+<pinnumItem comment="LCD-G5" id="97"/>
+<pinnumItem comment="JOYSTICK-UP" id="98"/>
+<pinnumItem comment="PMOD-CS" id="11"/>
+<pinnumItem comment="LCD-BACKLIGHT" id="99"/>
+<pinnumItem comment="QSPI-IO0" id="120"/>
+<pinnumItem comment="QSPI-CLK" id="121"/>
+<pinnumItem comment="QSPI-CS" id="122"/>
+<pinnumItem comment="SW2" id="2"/>
+<pinnumItem comment="QSPI-IO3" id="123"/>
+<pinnumItem comment="QSPI-IO2" id="124"/>
+<pinnumItem comment="JOYSTICK-RIGHT" id="4"/>
+<pinnumItem comment="LCD-TOUCH-INT" id="6"/>
+<pinnumItem comment="LCD-TOUCH-SCL" id="7"/>
+<pinnumItem comment="LCD-TOUCH-SDA" id="8"/>
+<pinnumItem comment="JOYSTICK-DOWN" id="9"/>
+<pinnumItem comment="XTAL" id="20"/>
+<pinnumItem comment="EXTAL" id="22"/>
+<pinnumItem comment="JTAG-TRST" id="25"/>
+<pinnumItem comment="SD-POWER-OK" id="136"/>
+<pinnumItem comment="SDHI-CD" id="32"/>
+<pinnumItem comment="SDHI-WP" id="33"/>
+<pinnumItem comment="SDHI-D1" id="34"/>
+<pinnumItem comment="SDHI-D0" id="35"/>
+<pinnumItem comment="SDHI-CLK" id="36"/>
+<pinnumItem comment="SDHI-CMD" id="37"/>
+<pinnumItem comment="SDHI-D3" id="38"/>
+<pinnumItem comment="SDHI-D2" id="39"/>
+<pinnumItem comment="LCD-TOUCH-RST" id="144"/>
+<pinnumItem comment="USB0-VBUSEN" id="40"/>
+<pinnumItem comment="USB0-OVRCURA" id="43"/>
+<pinnumItem comment="JOYSTICK-LEFT" id="44"/>
+<pinnumItem comment="JOYSTICK-CENTRE" id="45"/>
+<pinnumItem comment="USB0-DM" id="47"/>
+<pinnumItem comment="USB0-DP" id="48"/>
+<pinnumItem comment="PMOD-RST" id="51"/>
+<pinnumItem comment="PMOD-MISO" id="54"/>
+<pinnumItem comment="PMOD-SCK" id="55"/>
+<pinnumItem comment="PMOD-MOSI" id="56"/>
+<pinnumItem comment="ETHERNET-CRS-DV" id="58"/>
+<pinnumItem comment="PMOD-IRQ" id="61"/>
+<pinnumItem comment="ETHERNET-TXD1" id="63"/>
+<pinnumItem comment="ETHERNET-TXD0" id="64"/>
+<pinnumItem comment="ETHERNET-TX-EN" id="65"/>
+<pinnumItem comment="USB-SERIAL-TXD" id="67"/>
+<pinnumItem comment="ETHERNET-RX-ER" id="68"/>
+<pinnumItem comment="ETHERNET-RX-CLK" id="69"/>
+<pinnumItem comment="USB-SERIAL-RXD" id="70"/>
+<pinnumItem comment="ETHERNET-RXD0" id="71"/>
+<pinnumItem comment="ETHERNET-RXD1" id="72"/>
+<pinnumItem comment="PMOD-IO0" id="78"/>
+<pinnumItem comment="PMOD-IO1" id="79"/>
+<pinnumItem comment="LCD-G6" id="101"/>
+<pinnumItem comment="LCD-G7" id="102"/>
+<pinnumItem comment="LED2" id="104"/>
+<pinnumItem comment="LCD-R3" id="106"/>
+<pinnumItem comment="LCD-CLK" id="80"/>
+<pinnumItem comment="LCD-R4" id="107"/>
+<pinnumItem comment="LCD-VSYNC" id="81"/>
+<pinnumItem comment="LCD-R5" id="108"/>
+<pinnumItem comment="LCD-R6" id="109"/>
+<pinnumItem comment="LCD-HSYNC" id="83"/>
+<pinnumItem comment="LCD-DATA-EN" id="84"/>
+<pinnumItem comment="ETHERNET-MDC" id="85"/>
+<pinnumItem comment="ETHERNET-MDIO" id="86"/>
+<pinnumItem comment="LCD-B3" id="87"/>
 </tool>
 <tool id="Interrupt">
 <Item id="BSC_BUSERR" priority="15"/>
@@ -474,44 +550,6 @@
 <Item id="PERIA_INTA255" priority="15"/>
 </tool>
 <tool id="SWComponent" version="1.0.0.0">
-<configuration inuse="true" name="r_glcdc_rx">
-<component description="Dependency : r_bsp version(s) 5.20&#10;The GLCDC FIT module provides the method to output image data read from memory to the LCD panel. " detailDescription="Graphics LCD Controller Module." display="r_glcdc_rx" id="r_glcdc_rx1.10" version="1.10">
-<gridItem id="LCD_CLK" selectedIndex="1"/>
-<gridItem id="LCD_TCON0" selectedIndex="1"/>
-<gridItem id="LCD_TCON1" selectedIndex="0"/>
-<gridItem id="LCD_TCON2" selectedIndex="1"/>
-<gridItem id="LCD_TCON3" selectedIndex="1"/>
-<gridItem id="LCD_DATA0" selectedIndex="1"/>
-<gridItem id="LCD_DATA1" selectedIndex="1"/>
-<gridItem id="LCD_DATA2" selectedIndex="1"/>
-<gridItem id="LCD_DATA3" selectedIndex="1"/>
-<gridItem id="LCD_DATA4" selectedIndex="1"/>
-<gridItem id="LCD_DATA5" selectedIndex="1"/>
-<gridItem id="LCD_DATA6" selectedIndex="1"/>
-<gridItem id="LCD_DATA7" selectedIndex="1"/>
-<gridItem id="LCD_DATA8" selectedIndex="1"/>
-<gridItem id="LCD_DATA9" selectedIndex="1"/>
-<gridItem id="LCD_DATA10" selectedIndex="1"/>
-<gridItem id="LCD_DATA11" selectedIndex="1"/>
-<gridItem id="LCD_DATA12" selectedIndex="1"/>
-<gridItem id="LCD_DATA13" selectedIndex="1"/>
-<gridItem id="LCD_DATA14" selectedIndex="1"/>
-<gridItem id="LCD_DATA15" selectedIndex="1"/>
-<gridItem id="LCD_DATA16" selectedIndex="0"/>
-<gridItem id="LCD_DATA17" selectedIndex="0"/>
-<gridItem id="LCD_DATA18" selectedIndex="0"/>
-<gridItem id="LCD_DATA19" selectedIndex="0"/>
-<gridItem id="LCD_DATA20" selectedIndex="0"/>
-<gridItem id="LCD_DATA21" selectedIndex="0"/>
-<gridItem id="LCD_DATA22" selectedIndex="0"/>
-<gridItem id="LCD_DATA23" selectedIndex="0"/>
-<gridItem id="LCD_EXTCLK" selectedIndex="0"/>
-<gridItem id="GLCDC_CFG_PARAM_CHECKING_ENABLE" selectedIndex="1"/>
-<gridItem id="GLCDC_CFG_INTERRUPT_PRIORITY_LEVEL" selectedIndex="5"/>
-</component>
-<source description="Components supporting Firmware Integration Technology" display="Firmware Integration Technology" id="com.renesas.smc.tools.swcomponent.fit.source"/>
-<source description="Components supporting Firmware Integration Technology" display="Firmware Integration Technology" id="com.renesas.smc.tools.swcomponent.fit.source"/>
-</configuration>
 <configuration inuse="true" name="r_bsp">
 <component description="Dependencies : None&#10;The r_bsp package provides a foundation for code to be built on top of. It provides startup code, iodefines, and MCU information for different boards. There are 2 folders that make up the r_bsp package. The 'mcu' folder contains files that are common to a MCU group. These files provide functionality such as easy register access, CPU functions, and a file named 'mcu_info.h' for each MCU group. The 'mcu_info.h' file has information about the MCU on the board and is configured based on the information given in r_bsp_config.h. The information in 'mcu_info.h' is used to help configure Renesas middleware that uses the r_bsp package. The 'board' folder has a folder with startup code for each supported board.  Which MCU and board is chosen is decided by the settings in 'platform.h'. The user can choose which board they are using by uncommenting the include path that applies to their board. For example, if you are using the RSK+RX62N then you would uncomment the #include &quot;./board/rskrx62n/r_bsp.h&quot; include path. Users are encouraged to add their own boards to the 'board' directory. BSPs are configured by using the r_bsp_config.h file. Each board will have a reference configuration file named r_bsp_config_reference.h. The user should copy this file to their project, rename it to r_bsp_config.h, and use the options inside the file to configure the BSP for their project." detailDescription="Board Support Packages." display="r_bsp" id="r_bsp5.20" version="5.20">
 <gridItem id="BSP_CFG_STARTUP_DISABLE" selectedIndex="0"/>
@@ -552,6 +590,94 @@
 <gridItem id="BSP_CFG_EBMAPCR_4TH_PRIORITY" selectedIndex="2"/>
 <gridItem id="BSP_CFG_EBMAPCR_5TH_PRIORITY" selectedIndex="4"/>
 <gridItem id="BSP_CFG_FIT_IPL_MAX" selectedIndex="15"/>
+</component>
+<source description="Components supporting Firmware Integration Technology" display="Firmware Integration Technology" id="com.renesas.smc.tools.swcomponent.fit.source"/>
+<source description="Components supporting Firmware Integration Technology" display="Firmware Integration Technology" id="com.renesas.smc.tools.swcomponent.fit.source"/>
+</configuration>
+<configuration id="4ddb4bd9-b2c4-4fa7-8a25-e23ba68cad3c" inuse="true" name="Config_CMT0">
+<allocatable id="CMT0" name="CMT0">
+<isocket id="CountingClock" selection="Clock.tool_clock_pclkb" value="6.0E7"/>
+<option enabled="true" id="ClockDivision" selection="Devide8">
+<item id="Devide8" input="" vlaue="0"/>
+<item id="Devide32" input="" vlaue="0"/>
+<item id="Devide128" input="" vlaue="0"/>
+<item id="Devide512" input="" vlaue="0"/>
+</option>
+<option enabled="true" id="IntervalValue" selection="IntervalValue">
+<item id="IntervalValue" input="100" vlaue="65535"/>
+</option>
+<option enabled="true" id="IntervalUnit" selection="us">
+<item id="ms" input="" vlaue="0"/>
+<item id="us" input="" vlaue="0"/>
+<item id="ns" input="" vlaue="0"/>
+<item id="Count" input="" vlaue="0"/>
+</option>
+<option enabled="true" id="CNTRegValue" selection="CNTRegValue">
+<item id="CNTRegValue" input="749" vlaue="749"/>
+</option>
+<option enabled="true" id="IntCMWIEnable" selection="Enable">
+<item id="Enable" input="" vlaue="0"/>
+<item id="Disable" input="" vlaue="0"/>
+</option>
+<option enabled="true" id="IntCMWIPriority" selection="Level15">
+<item id="Level0" input="" vlaue="0"/>
+<item id="Level1" input="" vlaue="0"/>
+<item id="Level2" input="" vlaue="0"/>
+<item id="Level3" input="" vlaue="0"/>
+<item id="Level4" input="" vlaue="0"/>
+<item id="Level5" input="" vlaue="0"/>
+<item id="Level6" input="" vlaue="0"/>
+<item id="Level7" input="" vlaue="0"/>
+<item id="Level8" input="" vlaue="0"/>
+<item id="Level9" input="" vlaue="0"/>
+<item id="Level10" input="" vlaue="0"/>
+<item id="Level11" input="" vlaue="0"/>
+<item id="Level12" input="" vlaue="0"/>
+<item id="Level13" input="" vlaue="0"/>
+<item id="Level14" input="" vlaue="0"/>
+<item id="Level15" input="" vlaue="0"/>
+</option>
+</allocatable>
+<component description="This software component provides configurations for 16-bit/32-bit timer with module CMT/CMTW and can generate interrupts at set intervals. " detailDescription="" display="Compare Match Timer" id="com.renesas.smc.tools.swcomponent.codegenerator.cmtw" version="1.8.0"/>
+<allocator channelLevel0="0" channelLevel1="" channelLevel2="" channelLevel3="" channelLevel4="" channelLevel5="" description="Compare Match Timer 0" display="CMT0" id="com.renesas.smc.tools.swcomponent.codegenerator.cmtw.rx651.cmt0" type="CMT">
+<context/>
+</allocator>
+<source description="Code generator components provide peripheral drivers with customized generated source geared towards small code size" display="Code Generator" id="com.renesas.smc.tools.swcomponent.codegenerator.source"/>
+</configuration>
+<configuration inuse="true" name="r_glcdc_rx">
+<component description="Dependency : r_bsp version(s) 5.20&#10;The GLCDC FIT module provides the method to output image data read from memory to the LCD panel. " detailDescription="Graphics LCD Controller Module." display="r_glcdc_rx" id="r_glcdc_rx1.10" version="1.10">
+<gridItem id="LCD_CLK" selectedIndex="1"/>
+<gridItem id="LCD_TCON0" selectedIndex="1"/>
+<gridItem id="LCD_TCON1" selectedIndex="0"/>
+<gridItem id="LCD_TCON2" selectedIndex="1"/>
+<gridItem id="LCD_TCON3" selectedIndex="1"/>
+<gridItem id="LCD_DATA0" selectedIndex="1"/>
+<gridItem id="LCD_DATA1" selectedIndex="1"/>
+<gridItem id="LCD_DATA2" selectedIndex="1"/>
+<gridItem id="LCD_DATA3" selectedIndex="1"/>
+<gridItem id="LCD_DATA4" selectedIndex="1"/>
+<gridItem id="LCD_DATA5" selectedIndex="1"/>
+<gridItem id="LCD_DATA6" selectedIndex="1"/>
+<gridItem id="LCD_DATA7" selectedIndex="1"/>
+<gridItem id="LCD_DATA8" selectedIndex="1"/>
+<gridItem id="LCD_DATA9" selectedIndex="1"/>
+<gridItem id="LCD_DATA10" selectedIndex="1"/>
+<gridItem id="LCD_DATA11" selectedIndex="1"/>
+<gridItem id="LCD_DATA12" selectedIndex="1"/>
+<gridItem id="LCD_DATA13" selectedIndex="1"/>
+<gridItem id="LCD_DATA14" selectedIndex="1"/>
+<gridItem id="LCD_DATA15" selectedIndex="1"/>
+<gridItem id="LCD_DATA16" selectedIndex="0"/>
+<gridItem id="LCD_DATA17" selectedIndex="0"/>
+<gridItem id="LCD_DATA18" selectedIndex="0"/>
+<gridItem id="LCD_DATA19" selectedIndex="0"/>
+<gridItem id="LCD_DATA20" selectedIndex="0"/>
+<gridItem id="LCD_DATA21" selectedIndex="0"/>
+<gridItem id="LCD_DATA22" selectedIndex="0"/>
+<gridItem id="LCD_DATA23" selectedIndex="0"/>
+<gridItem id="LCD_EXTCLK" selectedIndex="0"/>
+<gridItem id="GLCDC_CFG_PARAM_CHECKING_ENABLE" selectedIndex="1"/>
+<gridItem id="GLCDC_CFG_INTERRUPT_PRIORITY_LEVEL" selectedIndex="5"/>
 </component>
 <source description="Components supporting Firmware Integration Technology" display="Firmware Integration Technology" id="com.renesas.smc.tools.swcomponent.fit.source"/>
 <source description="Components supporting Firmware Integration Technology" display="Firmware Integration Technology" id="com.renesas.smc.tools.swcomponent.fit.source"/>
