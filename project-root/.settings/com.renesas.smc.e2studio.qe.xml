@@ -6,7 +6,9 @@
 <Setting id="89" value="LCD_DATA2"/>
 <Setting id="110" value="LCD_DATA15"/>
 <Setting id="101" value="LCD_DATA9"/>
+<Setting id="2" value="P05"/>
 <Setting id="102" value="LCD_DATA10"/>
+<Setting id="104" value="P70"/>
 <Setting id="90" value="LCD_DATA3"/>
 <Setting id="106" value="LCD_DATA11"/>
 <Setting id="80" value="LCD_CLK"/>
@@ -46,6 +48,8 @@
 </Segment>
 <Segment id="Component">
 <Setting id="r_bsp" value="FIT"/>
+<Setting id="r_cmt_rx" value="FIT"/>
 <Setting id="r_glcdc_rx" value="FIT"/>
+<Setting id="r_gpio_rx" value="FIT"/>
 </Segment>
 </QE>

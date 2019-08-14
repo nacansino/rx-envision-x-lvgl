@@ -46,6 +46,8 @@
 #include "r_smc_entry.h"
 #include "r_glcdc_rx_if.h"
 #include "r_glcdc_rx_pinset.h"
+#include "r_gpio_rx_if.h"
+#include "r_cmt_rx_if.h"
 
 /* Header files for RPBRX65N Envision board output by QE for Display [RX] */
 #include "r_image_config_RX65N_Envision.h"
@@ -66,13 +68,13 @@
 #define PIXEL_COLOR_BLUE     (0x001F)
 #define PIXEL_COLOR_RED      (0xF800)
 
-
+/*GPIO Definitions*/
+#define  SW_2    (GPIO_PORT_0_PIN_5)
+#define  LED_2   (GPIO_PORT_7_PIN_0)
 
 /******************************************************************************
  Private global variables and functions
  ******************************************************************************/
-
-/* Bool type definition */
 
 /* Using GLCDC fit module */
 static glcdc_cfg_t gs_glcdc_init_cfg;                   /* Argument of R_GLCDC_Open function. */
@@ -133,6 +135,10 @@ static void qe_for_display_parameter_set (glcdc_cfg_t * glcdc_qe_cfg);
 static void glcdc_callback (void * pdata);
 static void board_port_setting (void);
 static void frame_buffer_initialize (void);
+void config_gpio_Ports(void);
+void flash_led2 (void);
+void cmt_cb(void *pdata);
+void pin_toggle(gpio_port_pin_t pin);
 
 void main(void);
 
@@ -148,15 +154,58 @@ void main(void);
 void main (void)
 {
 
+    gpio_err_t   my_gpio_err;
+    bool        cmt_result;
+    uint32_t    cmt_hdl;
+
+    /*Configure P05 and P70 as GPIO */
+    config_gpio_Ports();
+
+    /*Set up the LED2 pin as an output and the SW1 pin as an input.*/
+    R_GPIO_PinDirectionSet( SW_2, GPIO_DIRECTION_INPUT );
+    R_GPIO_PinDirectionSet( LED_2, GPIO_DIRECTION_OUTPUT );
+
+    /*Flash LED3 three times to show that the demo is running.*/
+    flash_led2();
+    flash_led2();
+    flash_led2();
+
     /* ---- Initialization of frame buffer area ---- */
     frame_buffer_initialize();
 
     /* ---- Initialization of the GLCDC, and start display ---- */
     glcdc_initialize();
 
+    /*Enable high-current drive for PJ5. For demonstration purposes only, not actually necessary to drive LED_3.
+     *Not all pins have high-current drive capability (see array: g_gpio_dscr_support in r_gpio_rx65n.c) */
+    my_gpio_err = R_GPIO_PinControl( LED_2, GPIO_CMD_DSCR_ENABLE );
+    if (GPIO_SUCCESS != my_gpio_err)
+    {
+        nop();  //Your error handler here.
+    }
+
+    /* Create timer0 and timer1 with callback at a rate of 3Hz. */
+	cmt_result = R_CMT_CreatePeriodic(6, cmt_cb, &cmt_hdl);
+	cmt_result = R_CMT_CreatePeriodic(6, cmt_cb, &cmt_hdl);
+
+	if (false == cmt_result)
+	{
+		nop();  //Handle your error here.
+	}
+
+
     while (1)
     {
-        nop();
+    	/*
+    	if ( GPIO_LEVEL_LOW == R_GPIO_PinRead(SW_2) )    //Check to see if SW1 is pressed.
+		{
+			R_GPIO_PinWrite ( LED_2, GPIO_LEVEL_LOW );   //SW1 is pressed, Turn on LED3
+		}
+		else
+		{
+			R_GPIO_PinWrite ( LED_2, GPIO_LEVEL_HIGH );  //SW1 is released, Turn off LED3
+		}
+		*/
     }
 
 } /* End of function main() */
@@ -487,4 +536,81 @@ static void board_port_setting (void)
 
 } /* End of function board_port_setting() */
 
+/***********************************************************************************************************************
+* Function Name: config_gpio_Ports
+* Description  : Configure P70 and P05 as GPIO and no IRQs.
+* Arguments    : none
+* Return Value : none
+***********************************************************************************************************************/
+void config_gpio_Ports(void)
+{
+    R_BSP_RegisterProtectDisable(BSP_REG_PROTECT_MPC);
+
+    PORT7.PMR.BIT.B0 = 0;     // P70 Port Mode Register. General I/O port.
+
+    PORT0.PMR.BIT.B5 = 0;     // P05 Port Mode Register. General I/O port.
+    MPC.P05PFS.BYTE  = 0x00;  // P05 is not used as IRQ input.
+
+    R_BSP_RegisterProtectEnable(BSP_REG_PROTECT_MPC);
+}
+/**************************************************************************
+* End of function config_gpio_Ports
+*************************************************************************/
+
+
+/************************************************************
+ * Function Name: flash_led2.
+ * Description  : This function flashes LED2 one time.
+ * Arguments    : none.
+ * Return value : none.
+ ***********************************************************/
+void flash_led2 (void)
+{
+    R_GPIO_PinWrite (LED_2, GPIO_LEVEL_LOW);       // LED3 on
+    R_BSP_SoftwareDelay(500, BSP_DELAY_MILLISECS); // Delay 1/2 second.
+    R_GPIO_PinWrite (LED_2, GPIO_LEVEL_HIGH);      // LED3 off
+    R_BSP_SoftwareDelay(500, BSP_DELAY_MILLISECS); // Delay 1/2 second.
+}
+/**************************************************************************
+* End of function flash_led3
+
+/******************************************************************************
+* Function Name : cmt_cb
+* Description   : This is the callback function that was assigned to the CMT
+*                 driver in main.  It is called by the CMT driver at a 2 Hz rate
+*                 and toggles LED0 and LED1 with each call generating 2Hz blink rate.
+* Arguments     : pdata - pointer to void
+* Return value  : none
+*******************************************************************************/
+void cmt_cb(void *pdata)
+{
+    uint32_t channel_num;
+
+    /* This is an example of how to dereference the channel number when more than
+     * one channel is used.  Channel numbers can be 0 to 3. */
+    channel_num = *((uint32_t *)pdata);
+
+    switch(channel_num)
+    {
+    case 0:
+        pin_toggle(LED_2);  // Toggle LED0 with each callback
+        break;
+    default:
+        break;
+    }
+}
+
+/******************************************************************************
+* Function Name : pin_toggle
+* Description   : This function toggles the output of a pin.
+* Arguments     : gpio_port_t pin - pin to toggle
+* Return value  : none
+*******************************************************************************/
+void pin_toggle(gpio_port_pin_t pin){
+	if(R_GPIO_PinRead(pin) == GPIO_LEVEL_LOW){
+		R_GPIO_PinWrite(pin, GPIO_LEVEL_HIGH);
+	}else{
+		R_GPIO_PinWrite(pin, GPIO_LEVEL_LOW);
+	}
+}
 /* End of File */

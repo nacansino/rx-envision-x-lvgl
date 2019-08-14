@@ -250,6 +250,8 @@
 <pinItem allocation="96" comments="" direction="None" id="LCD_DATA7" locked="false" status="0"/>
 <pinItem allocation="97" comments="" direction="None" id="LCD_DATA8" locked="false" status="0"/>
 <pinItem allocation="101" comments="" direction="None" id="LCD_DATA9" locked="false" status="0"/>
+<pinItem allocation="2" comments="" direction="None" id="P05" locked="false" status="512"/>
+<pinItem allocation="104" comments="" direction="None" id="P70" locked="false" status="512"/>
 </tool>
 <tool id="Interrupt">
 <Item id="BSC_BUSERR" priority="15"/>
@@ -552,6 +554,20 @@
 <gridItem id="BSP_CFG_EBMAPCR_4TH_PRIORITY" selectedIndex="2"/>
 <gridItem id="BSP_CFG_EBMAPCR_5TH_PRIORITY" selectedIndex="4"/>
 <gridItem id="BSP_CFG_FIT_IPL_MAX" selectedIndex="15"/>
+</component>
+<source description="Components supporting Firmware Integration Technology" display="Firmware Integration Technology" id="com.renesas.smc.tools.swcomponent.fit.source"/>
+<source description="Components supporting Firmware Integration Technology" display="Firmware Integration Technology" id="com.renesas.smc.tools.swcomponent.fit.source"/>
+</configuration>
+<configuration inuse="true" name="r_gpio_rx">
+<component description="Dependency : r_bsp version(s) 5.20&#10;This code implements a General Purpose Input/Output driver. Common features such as reading, writing, and setting the direction of ports and pins is supported. Enabling features such as open-drain outputs and internal pull-ups are also supported." detailDescription="General Purpose Input/Output Driver" display="r_gpio_rx" id="r_gpio_rx3.00" version="3.00">
+<gridItem id="GPIO_CFG_PARAM_CHECKING_ENABLE" selectedIndex="0"/>
+</component>
+<source description="Components supporting Firmware Integration Technology" display="Firmware Integration Technology" id="com.renesas.smc.tools.swcomponent.fit.source"/>
+<source description="Components supporting Firmware Integration Technology" display="Firmware Integration Technology" id="com.renesas.smc.tools.swcomponent.fit.source"/>
+</configuration>
+<configuration inuse="true" name="r_cmt_rx">
+<component description="Dependency : r_bsp version(s) 5.20&#10;This module creates a timer tick using a CMT channel based on a frequency input by the user." detailDescription="Simple CMT driver for creating timer tick." display="r_cmt_rx" id="r_cmt_rx4.00" version="4.00">
+<gridItem id="CMT_RX_CFG_IPR" selectedIndex="5"/>
 </component>
 <source description="Components supporting Firmware Integration Technology" display="Firmware Integration Technology" id="com.renesas.smc.tools.swcomponent.fit.source"/>
 <source description="Components supporting Firmware Integration Technology" display="Firmware Integration Technology" id="com.renesas.smc.tools.swcomponent.fit.source"/>
