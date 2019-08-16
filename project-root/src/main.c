@@ -48,6 +48,8 @@
 #include "r_glcdc_rx_pinset.h"
 #include "r_gpio_rx_if.h"
 #include "r_cmt_rx_if.h"
+#include "lv_conf.h"
+#include "lvgl/lvgl.h"
 
 /* Header files for RPBRX65N Envision board output by QE for Display [RX] */
 #include "r_image_config_RX65N_Envision.h"
@@ -139,9 +141,11 @@ void config_gpio_Ports(void);
 void flash_led2 (void);
 void cmt_cb(void *pdata);
 void pin_toggle(gpio_port_pin_t pin);
+void my_disp_flush(lv_disp_t * disp, const lv_area_t * area, lv_color_t * color_p);
+void lv_tick_cb(void *pdata);
+void lv_task_handler_cb(void *pdata);
 
 void main(void);
-
 
 /*******************************************************************************
  * Outline      : Main processing routine
@@ -157,6 +161,11 @@ void main (void)
     gpio_err_t   my_gpio_err;
     bool        cmt_result;
     uint32_t    cmt_hdl;
+
+    /* Creating a display buffer for LittlevGL */
+    static lv_disp_buf_t disp_buf;
+    static lv_color_t buf[LV_HOR_RES_MAX * 10];                     /*Declare a buffer for 10 lines*/
+    lv_disp_buf_init(&disp_buf, buf, NULL, LV_HOR_RES_MAX * 10);    /*Initialize the display buffer*/
 
     /*Configure P05 and P70 as GPIO */
     config_gpio_Ports();
@@ -184,15 +193,24 @@ void main (void)
         nop();  //Your error handler here.
     }
 
-    /* Create timer0 and timer1 with callback at a rate of 3Hz. */
-	cmt_result = R_CMT_CreatePeriodic(6, cmt_cb, &cmt_hdl);
-	cmt_result = R_CMT_CreatePeriodic(6, cmt_cb, &cmt_hdl);
+    /* Create timer0 and timer1 with callback at a rate of 100Hz for display */
+	cmt_result = R_CMT_CreatePeriodic(100, lv_tick_cb, &cmt_hdl);
+	cmt_result = R_CMT_CreatePeriodic(100, lv_task_handler_cb, &cmt_hdl);
 
 	if (false == cmt_result)
 	{
 		nop();  //Handle your error here.
 	}
 
+	/* Initialize lv_init */
+	lv_init();
+
+	/* Implement and register a function which can copy a pixel array to an area of your display: */
+	lv_disp_drv_t disp_drv;               /*Descriptor of a display driver*/
+	lv_disp_drv_init(&disp_drv);          /*Basic initialization*/
+	disp_drv.flush_cb = my_disp_flush;    /*Set your driver function*/
+	disp_drv.buffer = &disp_buf;          /*Assign the buffer to the display*/
+	lv_disp_drv_register(&disp_drv);      /*Finally register the driver*/
 
     while (1)
     {
@@ -575,14 +593,14 @@ void flash_led2 (void)
 * End of function flash_led3
 
 /******************************************************************************
-* Function Name : cmt_cb
+* Function Name : cmt_cb_led3
 * Description   : This is the callback function that was assigned to the CMT
 *                 driver in main.  It is called by the CMT driver at a 2 Hz rate
-*                 and toggles LED0 and LED1 with each call generating 2Hz blink rate.
+*                 and toggles LED3 with each call generating x Hz blink rate.
 * Arguments     : pdata - pointer to void
 * Return value  : none
 *******************************************************************************/
-void cmt_cb(void *pdata)
+void cmt_cb_led3(void *pdata)
 {
     uint32_t channel_num;
 
@@ -601,6 +619,32 @@ void cmt_cb(void *pdata)
 }
 
 /******************************************************************************
+* Function Name : lv_tick_cb
+* Description   : This is the callback function that was assigned to the CMT
+*                 driver in main.  It is called by the CMT driver at a 100 Hz rate
+*                 and toggles display tick.
+* Arguments     : pdata - pointer to void
+* Return value  : none
+*******************************************************************************/
+void lv_tick_cb(void *pdata)
+{
+	lv_tick_inc(10); /* Tick every 10ms */
+}
+
+/******************************************************************************
+* Function Name : lv_task_handler_cb
+* Description   : This is the callback function that was assigned to the CMT
+*                 driver in main.  It is called by the CMT driver at a 100 Hz rate
+*                 and toggles display tick.
+* Arguments     : pdata - pointer to void
+* Return value  : none
+*******************************************************************************/
+void lv_task_handler_cb(void *pdata)
+{
+	lv_task_handler();
+}
+
+/******************************************************************************
 * Function Name : pin_toggle
 * Description   : This function toggles the output of a pin.
 * Arguments     : gpio_port_t pin - pin to toggle
@@ -613,4 +657,24 @@ void pin_toggle(gpio_port_pin_t pin){
 		R_GPIO_PinWrite(pin, GPIO_LEVEL_LOW);
 	}
 }
+
+/******************************************************************************
+* Function Name : my_disp_flush
+* Description   : Implement and register a function which can copy a pixel array to an area of your display:
+* Arguments     : lv_disp_t * disp, const lv_area_t * area, lv_color_t * color_p
+* Return value  : none
+*******************************************************************************/
+void my_disp_flush(lv_disp_t * disp, const lv_area_t * area, lv_color_t * color_p)
+	{
+	    int32_t x, y;
+	    for(y = area->y1; y <= area->y2; y++) {
+	        for(x = area->x1; x <= area->x2; x++) {
+	            set_pixel(x, y, *color_p);  /* Put a pixel to the display.*/
+	            color_p++;
+	        }
+	    }
+
+	    lv_disp_flush_ready(disp);         /* Indicate you are ready with the flushing*/
+	}
+
 /* End of File */
